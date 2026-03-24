@@ -82,6 +82,19 @@ stock-sentiment-pipeline/
 
 ---
 
+## 🔄 Airflow Orchestration
+
+The pipeline is orchestrated using Apache Airflow with task-level dependencies:
+
+- `get_stock_data` → Fetches stock data from the source API
+- `transform_data` → Cleans and enriches the dataset
+- `validate_data` → Performs schema and data quality checks
+- `upload_to_s3` → Uploads processed output to AWS S3
+
+This setup enables scheduled, repeatable, and monitored pipeline execution through the Airflow UI.
+
+---
+
 ## ▶️ How to Run the Pipeline
 
 ### 1. Create virtual environment
@@ -117,6 +130,17 @@ Enter:
 python scripts/run_pipeline.py
 ```
 
+## 📸 Screenshots
+
+### Airflow DAG View
+![Airflow DAG View](images/airflow_dag_view.png)
+
+### Airflow Task Success
+![Airflow Task Success](images/airflow_task_success.png)
+
+### AWS S3 Output
+![AWS S3 Output](images/aws_s3_output.png)
+
 ---
 
 ## ☁️ Output
@@ -149,11 +173,12 @@ s3://stock-data-pipeline-123/processed/aapl_processed.csv
 
 ## 🚀 Future Enhancements
 
-- Add Apache Airflow for scheduling and orchestration  
-- Integrate real-time streaming (Kafka or AWS Kinesis)  
-- Build dashboards using Power BI or Tableau  
-- Store data in AWS Redshift for analytics  
-- Add CI/CD pipeline  
+- Replace `BashOperator` tasks with `PythonOperator`
+- Add retry policies and failure alerts in Airflow
+- Support multiple stock tickers dynamically
+- Build dashboards using Power BI or Tableau
+- Store processed data in AWS Redshift for analytics
+- Add CI/CD pipeline using GitHub Actions 
 
 ---
 
