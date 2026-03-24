@@ -84,7 +84,7 @@ stock-sentiment-pipeline/
 
 ## ▶️ How to Run the Pipeline
 
-### 1. Create virtual environment
+1. Create virtual environment
 python -m venv venv
 .\venv\Scripts\activate
 
