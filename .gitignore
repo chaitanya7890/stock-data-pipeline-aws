@@ -1,7 +1,9 @@
+output/
+airflow/
 venv/
+airflow_venv/
 __pycache__/
 *.pyc
-output/
 .env
-airflow/
-.aws/
+.airflow/
+logs/
